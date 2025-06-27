@@ -5,10 +5,14 @@ const EventEmitter = require('events');
 const emitter = new EventEmitter();
 var url =`https://example.com/api/logs`;
 
-function logMessage(message) {
-    console.log(`Logging message: ${message}`);
-    // Emit the 'log' event with the message
-    emitter.emit('log', message);
-    
+class Logger extends EventEmitter {
+    log(message) {
+        console.log(`Logging message: ${message}`);
+        // Emit the 'log' event with the message
+        this.emit('Messagelogged', { id: 1, url: url, message: message });
+    }
 }
-module.exports.logMessage = logMessage;
+
+
+module.exports = Logger;
+  
