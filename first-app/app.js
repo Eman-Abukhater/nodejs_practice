@@ -1,12 +1,18 @@
-const EventEmitter = require('events');
-// call a function to log a message
-const Logger = require('./logger');
-const log = new Logger();
-// Register an event listener for the 'log' event
-emitter.on('messageLogged', (arg) => {
-    console.log(`Listener called, ${arg}`);
-    });
+const http = require('http');
 
-Logger.log('Hello World!');
+const server = http.createServer((req, res) => {
+    if (req.url === '/') {
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Hello World');
+    } else if (req.url === '/api') {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ message: 'API endpoint' }));
+    } else {
+        res.writeHead(404, { 'Content-Type': 'text/plain' });
+        res.end('Not Found');
+    }
+}
+);
 
-//
+server.listen(3000);
+console.log('Server is running on http://localhost:3000');
