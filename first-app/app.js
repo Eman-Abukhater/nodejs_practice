@@ -1,3 +1,4 @@
+// This is a simple Node.js application that creates an HTTP server
 const http = require('http');
 
 const server = http.createServer((req, res) => {
