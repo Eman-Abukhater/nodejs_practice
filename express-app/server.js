@@ -20,7 +20,8 @@ app.get('/about', (req, res) => {
 }
 );
 
-app.use('/user',router)
+app.use(express.json()); // Middleware to parse JSON bodies
+app.use('/user', router)
 
 
 
@@ -35,6 +36,27 @@ app.get('/search', (req, res) => {
 }
 );
 
+app.post('/users',express.json() ,(req, res) => {
+ 
+  const { name, email } = req.body;
+  res.json({
+    message: `User ${name} with email ${email} created successfully!`
+  }
+  );
+
+});
+
+app.put('/users/:id', express.json(), (req, res) => {
+  const userId = req.params.id;
+  const { name, email } = req.body;
+  res.json({
+    message: `User with ID ${userId} updated successfully!`,
+    user: { name, email }
+  }
+  );
+
+}
+);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
