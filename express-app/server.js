@@ -23,10 +23,6 @@ app.get('/about', (req, res) => {
 app.use(express.json()); // Middleware to parse JSON bodies
 app.use('/user', router)
 
-
-
-
-
 // // Define a new route for '/user/:username'
 // app.get('/user/:username', usernameController
 // );
@@ -36,8 +32,8 @@ app.get('/search', (req, res) => {
 }
 );
 
-app.post('/users',express.json() ,(req, res) => {
- 
+app.post('/users', express.json(), (req, res) => {
+
   const { name, email } = req.body;
   res.json({
     message: `User ${name} with email ${email} created successfully!`
@@ -64,6 +60,11 @@ app.delete('/users/:id', (req, res) => {
   }
   );
 
+}
+);
+app.get('/employee/:name/:id', (req, res) => {
+  const { name, id } = req.params;
+  res.json(`Employee Name: ${name}, ID: ${id}`);
 }
 );
 
