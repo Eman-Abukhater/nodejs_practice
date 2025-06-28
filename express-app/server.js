@@ -1,5 +1,7 @@
 import express from 'express';
-import { usernameController } from './controller';
+import router from './route.js';
+// Import the usernameController from controller.js
+
 const app = express();
 
 const PORT = 3000;
@@ -18,13 +20,15 @@ app.get('/about', (req, res) => {
 }
 );
 
+app.use('/user',router)
 
 
 
 
-// Define a new route for '/user/:username'
-app.get('/user/:username', usernameController
-);
+
+// // Define a new route for '/user/:username'
+// app.get('/user/:username', usernameController
+// );
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword;
   res.send(`You searched for: ${keyword}`);
