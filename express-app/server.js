@@ -57,6 +57,15 @@ app.put('/users/:id', express.json(), (req, res) => {
 
 }
 );
+app.delete('/users/:id', (req, res) => {
+  const userId = req.params.id;
+  res.json({
+    message: `User with ID ${userId} deleted successfully!`
+  }
+  );
+
+}
+);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
