@@ -4,15 +4,6 @@ import router from './route.js';
 const app = express();
 const PORT = 3000;
 
-app.use((req, res, next) => {
-  console.log('Start)')
-  res.on('finish', () => {
-    console.log('End');
-  }
-  );
-  next(); // Pass control to the next middleware or route handler
-}
-);
 app.get('/', (req, res) => {
   // to send a response from the server
   console.log('middleware called');
@@ -20,6 +11,18 @@ app.get('/', (req, res) => {
 
 }
 );
+// app.get('/error', () => {
+//   // to simulate an error
+//   throw new Error('This is a simulated error');
+// }
+// );
+
+// app.use((err, req, res, next) => {
+//   // to handle errors
+// console.error(err.message);
+// res.send ("Internal Server Error");
+// }
+// );
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 }
