@@ -3,26 +3,14 @@ import router from './route.js';
 
 const app = express();
 const PORT = 3000;
-
+// Set EJS as the view engine
+app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
-  // to send a response from the server
-  console.log('middleware called');
-  res.send('Hello, Express!');
+ res.send('Welcome to the Express App with EJS!');
 
 }
 );
-// app.get('/error', () => {
-//   // to simulate an error
-//   throw new Error('This is a simulated error');
-// }
-// );
 
-// app.use((err, req, res, next) => {
-//   // to handle errors
-// console.error(err.message);
-// res.send ("Internal Server Error");
-// }
-// );
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 }
